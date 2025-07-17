@@ -1,13 +1,15 @@
 import { useParams, Link } from "react-router-dom";
+import { useState } from "react";
 import { stories } from "@/data/stories";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowLeft, Home, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowLeft, Home, ChevronLeft, ChevronRight, Languages } from "lucide-react";
 
 export default function Story() {
   const { id } = useParams();
   const storyId = parseInt(id || "1");
   const story = stories.find((s) => s.id === storyId);
+  const [isNepali, setIsNepali] = useState(false);
   
   if (!story) {
     return (
@@ -37,11 +39,22 @@ export default function Story() {
                 Back to Stories
               </Button>
             </Link>
-            <Link to="/">
-              <Button variant="ghost" size="sm" className="hover:bg-story-secondary/30">
-                <Home className="w-4 h-4" />
+            <div className="flex items-center gap-2">
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                onClick={() => setIsNepali(!isNepali)}
+                className="flex items-center gap-2 hover:bg-story-secondary/30"
+              >
+                <Languages className="w-4 h-4" />
+                {isNepali ? "English" : "नेपाली"}
               </Button>
-            </Link>
+              <Link to="/">
+                <Button variant="ghost" size="sm" className="hover:bg-story-secondary/30">
+                  <Home className="w-4 h-4" />
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
@@ -62,18 +75,18 @@ export default function Story() {
             {/* Title and Moral */}
             <div className="text-center mb-8">
               <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                {story.title}
+                {isNepali ? story.titleNepali : story.title}
               </h1>
               <div className="inline-block p-4 bg-gradient-to-r from-story-warm/40 to-story-accent/40 rounded-2xl">
                 <p className="text-lg font-medium text-story-primary">
-                  ✨ {story.moral}
+                  ✨ {isNepali ? story.moralNepali : story.moral}
                 </p>
               </div>
             </div>
 
             {/* Story Text */}
             <div className="prose prose-lg max-w-none">
-              {story.content.split('\n\n').map((paragraph, index) => (
+              {(isNepali ? story.contentNepali : story.content).split('\n\n').map((paragraph, index) => (
                 <p key={index} className="text-foreground leading-relaxed mb-6 text-lg">
                   {paragraph}
                 </p>
