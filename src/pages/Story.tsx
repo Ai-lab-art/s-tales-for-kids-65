@@ -1,15 +1,17 @@
 import { useParams, Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { stories } from "@/data/stories";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowLeft, Home, ChevronLeft, ChevronRight, Languages } from "lucide-react";
+import { ArrowLeft, Home, ChevronLeft, ChevronRight, Languages, Volume2, StopCircle } from "lucide-react";
 
 export default function Story() {
   const { id } = useParams();
   const storyId = parseInt(id || "1");
   const story = stories.find((s) => s.id === storyId);
   const [isNepali, setIsNepali] = useState(false);
+  const [isSpeaking, setIsSpeaking] = useState(false);
+  const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
   
   if (!story) {
     return (
@@ -26,6 +28,64 @@ export default function Story() {
 
   const prevStory = stories.find((s) => s.id === storyId - 1);
   const nextStory = stories.find((s) => s.id === storyId + 1);
+
+  const getStoryText = () => {
+    const title = isNepali ? story.titleNepali : story.title;
+    const moral = isNepali ? story.moralNepali : story.moral;
+    const content = (isNepali ? story.contentNepali : story.content).split("\n\n").join(" ");
+    return `${title}. ${moral}. ${content}`;
+  };
+
+  const startSpeaking = () => {
+    try {
+      const text = getStoryText();
+      if (!text) return;
+      window.speechSynthesis.cancel();
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = isNepali ? "ne-NP" : "en-US";
+      utter.rate = 1;
+      utter.pitch = 1;
+      const voices = window.speechSynthesis.getVoices();
+      const preferred = voices.find((v) => v.lang && v.lang.toLowerCase().startsWith(isNepali ? "ne" : "en"));
+      if (preferred) utter.voice = preferred;
+      utter.onend = () => {
+        setIsSpeaking(false);
+        utteranceRef.current = null;
+      };
+      utter.onerror = () => {
+        setIsSpeaking(false);
+        utteranceRef.current = null;
+      };
+      utteranceRef.current = utter;
+      window.speechSynthesis.speak(utter);
+      setIsSpeaking(true);
+    } catch (e) {
+      setIsSpeaking(false);
+    }
+  };
+
+  const toggleSpeak = () => {
+    if (isSpeaking) {
+      window.speechSynthesis.cancel();
+      setIsSpeaking(false);
+      utteranceRef.current = null;
+    } else {
+      startSpeaking();
+    }
+  };
+
+  useEffect(() => {
+    return () => {
+      window.speechSynthesis.cancel();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isSpeaking) {
+      window.speechSynthesis.cancel();
+      startSpeaking();
+    }
+  }, [isNepali]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-story-secondary/20">
@@ -49,6 +109,17 @@ export default function Story() {
                 <Languages className="w-4 h-4" />
                 {isNepali ? "English" : "नेपाली"}
               </Button>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={toggleSpeak}
+                className="flex items-center gap-2 hover:bg-story-secondary/30"
+                aria-label={isSpeaking ? "Stop reading" : "Listen to story"}
+              >
+                {isSpeaking ? <StopCircle className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+                {isSpeaking ? "Stop" : "Listen"}
+              </Button>
+
               <Link to="/">
                 <Button variant="ghost" size="sm" className="hover:bg-story-secondary/30">
                   <Home className="w-4 h-4" />
