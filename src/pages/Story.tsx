@@ -4,6 +4,7 @@ import { stories } from "@/data/stories";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowLeft, Home, ChevronLeft, ChevronRight, Languages, Volume2, StopCircle } from "lucide-react";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 export default function Story() {
   const { id } = useParams();
@@ -134,13 +135,35 @@ export default function Story() {
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         <Card className="overflow-hidden bg-white/90 backdrop-blur-sm shadow-xl">
           {/* Story Image */}
-          <div className="aspect-[16/10] overflow-hidden">
-            <img
-              src={story.image}
-              alt={story.title}
-              className="w-full h-full object-cover"
-            />
-          </div>
+          {story.images && story.images.length > 0 ? (
+            <Carousel className="w-full">
+              <CarouselContent>
+                {story.images.map((src, idx) => (
+                  <CarouselItem key={idx}>
+                    <div className="aspect-[16/10] overflow-hidden">
+                      <img
+                        src={src}
+                        alt={`${isNepali ? story.titleNepali : story.title} - image ${idx + 1}`}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
+          ) : (
+            <div className="aspect-[16/10] overflow-hidden">
+              <img
+                src={story.image}
+                alt={isNepali ? story.titleNepali : story.title}
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+          )}
           
           <CardContent className="p-8">
             {/* Title and Moral */}

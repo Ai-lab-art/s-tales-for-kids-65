@@ -11,13 +11,16 @@ interface StoryCardProps {
 export function StoryCard({ story }: StoryCardProps) {
   return (
     <Card className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden bg-gradient-to-br from-white to-story-secondary/20 border-2 border-story-secondary/30 hover:border-story-primary/50">
-      <div className="aspect-[4/3] overflow-hidden">
-        <img
-          src={story.image}
-          alt={story.title}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-        />
-      </div>
+        <Link to={`/story/${story.id}`} aria-label={`Open story: ${story.title}`}>
+          <div className="aspect-[4/3] overflow-hidden cursor-pointer">
+            <img
+              src={story.image}
+              alt={`${story.title} children\'s story cover`}
+              loading="lazy"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+        </Link>
       <CardContent className="p-4">
         <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-story-primary transition-colors">
           {story.title}

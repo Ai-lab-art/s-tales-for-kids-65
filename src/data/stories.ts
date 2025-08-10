@@ -29,6 +29,16 @@ import story27Image from '@/assets/story27-monkey.jpg';
 import story28Image from '@/assets/story28-deer.jpg';
 import story29Image from '@/assets/story29-firefly.jpg';
 import story30Image from '@/assets/story30-dragon.jpg';
+import story21Image2 from '@/assets/story21-raccoon-2.jpg';
+import story22Image2 from '@/assets/story22-giraffe-2.jpg';
+import story23Image2 from '@/assets/story23-panda-2.jpg';
+import story24Image2 from '@/assets/story24-koala-2.jpg';
+import story25Image2 from '@/assets/story25-lion-cub-2.jpg';
+import story26Image2 from '@/assets/story26-whale-2.jpg';
+import story27Image2 from '@/assets/story27-monkey-2.jpg';
+import story28Image2 from '@/assets/story28-deer-2.jpg';
+import story29Image2 from '@/assets/story29-firefly-2.jpg';
+import story30Image2 from '@/assets/story30-dragon-2.jpg';
 
 
 export interface Story {
@@ -38,6 +48,7 @@ export interface Story {
   moral: string;
   moralNepali: string;
   image: string;
+  images?: string[];
   content: string;
   contentNepali: string;
   summary: string;
@@ -1124,6 +1135,7 @@ Young unicorns would come to her to learn magic, and she would always tell them,
     moral: "Curiosity with kindness lights the way",
     moralNepali: "जिज्ञासा र दयाले बाटो उज्यालो बनाउँछ",
     image: story21Image,
+    images: [story21Image, story21Image2],
     summary: "Rin the raccoon finds an old lantern and learns how gentle curiosity can guide friends through the dark.",
     summaryNepali: "रिन र्‍याकूनले पुरानो दियो फेला पार्छ र जिज्ञासा र दयाले अँध्यारोमा साथीहरूलाई कसरी डोर्‍याउँछ भन्ने सिक्छ।",
     content: `Rin the raccoon loved questions more than acorns. One evening, while the forest turned silver under the moon, Rin found an old brass lantern tangled in ivy.
@@ -1134,7 +1146,11 @@ When fireflies drifted close, the lantern glowed warmly. Rin realized it didn't 
 
 Soon he met Poppy the porcupine and Miko the mouse, afraid to cross the hollow log bridge. "Follow the glow with me," Rin said. Together, they crossed, step by careful step, giggling when the log creaked.
 
-Rin learned that good questions make light—Where is it safest? Who needs help first?—and that sharing the glow makes everyone brave. By dawn, the lantern was bright as joy, and so were their hearts.`,
+Rin learned that good questions make light—Where is it safest? Who needs help first?—and that sharing the glow makes everyone brave. By dawn, the lantern was bright as joy, and so were their hearts.
+
+At moonset they made a tiny map of safe places and tucked it under a smooth stone. The lantern’s glow was a promise: wherever questions were asked kindly, the path would appear.
+
+Years later, little ones still found the stone and added notes of their own—new bridges, warmer nests, friends to call in storms—because curiosity is a light that grows when shared.`,
     contentNepali: `रिन र्‍याकूनलाई अकोर्नभन्दा प्रश्नहरू धेरै मन पर्थ्यो। एक साँझ, जब जंगल चन्द्रमाको उज्यालोमा चाँदी जस्तो देखिन्थ्यो, रिनले आइभीमा अड्किएको पुरानो पित्तलको दियो फेला पार्यो।
 
 "तिमी के हौ?" रिनले फुसफुसायो, कांच सफा गर्दै, जबसम्म त्यो सानो चन्द्रमाजस्तै चम्किएन।
@@ -1143,7 +1159,11 @@ Rin learned that good questions make light—Where is it safest? Who needs help 
 
 चाँडै नै उसले पपि सुली र मिको मुसालाई भेट्यो, खोक्रो पुल काट्न डराउना। "मेरो उज्यालोलाई पछ्याऊ," रिनले भन्यो। उनीहरू सँगै, होशियारीका साथ एक–एक कदम चाल्दै, पुल काटे, लठ्ठी किरकिराउँदा हाँस्दै।
 
-रिनले सिक्यो कि असल प्रश्नहरूले उज्यालो बनाउँछन्—सबैभन्दा सुरक्षित कहाँ हो? पहिले कसलाई मद्दत चाहिन्छ?—र उज्यालो बाँड्दा सबै साहसी बन्छन्। बिहान पर्दासम्म, दियो आनन्दजस्तै चम्किएको थियो, र उनीहरूको मुटु पनि।`
+रिनले सिक्यो कि असल प्रश्नहरूले उज्यालो बनाउँछन्—सबैभन्दा सुरक्षित कहाँ हो? पहिले कसलाई मद्दत चाहिन्छ?—र उज्यालो बाँड्दा सबै साहसी बन्छन्। बिहान पर्दासम्म, दियो आनन्दजस्तै चम्किएको थियो, र उनीहरूको मुटु पनि।
+
+चन्द्र अस्ताउँदा उनीहरूले सुरक्षित ठाउँहरूको सानो नक्सा बनाए र एक चिल्लो ढुंगामुनि राखे। दियोको उज्यालो एउटा वाचा बन्यो: जति नम्रताका साथ प्रश्न गरिन्छ, बाटो देखापर्छ।
+
+वर्षौँपछि पनि, साना नानीहरूले त्यो ढुंगालाई भेट्थे र आफ्ना नोट थप्थे—नयाँ पुलहरू, न्यानो गुँड, आँधी आयो भने फोन गर्ने साथी—किनकि जिज्ञासा बाँड्दा बढ्ने प्रकाश हो।`
   },
   {
     id: 22,
@@ -1152,6 +1172,7 @@ Rin learned that good questions make light—Where is it safest? Who needs help 
     moral: "Creativity grows when it is shared",
     moralNepali: "सृजनशीलता बाँड्दा झन् बढ्छ",
     image: story22Image,
+    images: [story22Image, story22Image2],
     summary: "Gia the giraffe learns that sharing her colors helps the whole savanna glow.",
     summaryNepali: "जिया जिराफले आफ्ना रङ बाँड्दा पूरै सवाना उज्यालो हुने सिक्छिन्।",
     content: `Every sunset, Gia the giraffe dipped a giant brush into clouds and painted the sky with mango, peach, and plum. Birds cheered. Zebras sighed. Even the shy jackals peeked.
@@ -1162,7 +1183,11 @@ One dry season, the colors faded. "I've used them all up," Gia frowned. "No more
 
 Together they swept the sky with laughter and long strokes. The sunset returned—brighter than ever—because it was made by many hearts.
 
-Gia learned that art isn't a secret to keep. It's a song to sing together.`,
+Gia learned that art isn't a secret to keep. It's a song to sing together.
+
+From then on, Gia hosted sky-painting festivals. Calves learned circles, owls dabbed stars, and even the wind tried a soft brush. The sky became a gallery of everyone’s best feelings.
+
+Some evenings, Gia painted nothing at all—she simply watched her friends color the world, and that, too, was art.`,
     contentNepali: `हरेक साँझ, जिया जिराफले बादलमा ठूला ब्रस डुबाएर आम, आरू र आलुबखडाको जस्तै रङले आकाश रंगाउँथिन्। चरा चिच्याउँथे। जेब्राहरू सुइँ सुइँ गर्थे। लजालु स्यालहरूले पनि टोलाए।
 
 एक सुख्खा मौसममा, रङ हराउँदै गए। "मैले सबै खर्चेछु," जियाले भौं चाउरिन्। "अब सूर्यास्त छैन।"
@@ -1171,7 +1196,11 @@ Gia learned that art isn't a secret to keep. It's a song to sing together.`,
 
 उनीहरूले सँगै हाँसो र लामो स्ट्रोकसँग आकाश उज्यालो पारे। सूर्यास्त फिर्ता आयो—पहिलाभन्दा झन् उज्यालो—किनकि त्यो धेरै मुटुले बनाएको थियो।
 
-जियाले सिकिन् कि कला लुकाउने रहस्य होइन। यो सँगै गाउने गीत हो।`
+जियाले सिकिन् कि कला लुकाउने रहस्य होइन। यो सँगै गाउने गीत हो।
+
+त्यस दिनपछि, जियाले आकाश–चित्र उत्सव गराउन थालिन्। बाछाहरूले घेरा बनाउन सिके, उल्लूले तारा टिपे, र हावाले पनि कोमल ब्रस चलाउन प्रयास गर्यो। आकाश सबैका उत्कृष्ट भावनाहरूको ग्यालरी बन्यो।
+
+कहिलेकाहीँ, जियाले केही नचित्रिन्—उनी केवल आफ्ना साथीहरूलाई संसार रंगाउन हेर्थिन्, र त्यो पनि कला नै थियो।`
   },
   {
     id: 23,
@@ -1180,6 +1209,7 @@ Gia learned that art isn't a secret to keep. It's a song to sing together.`,
     moral: "Patience makes sweet things sweeter",
     moralNepali: "धैर्यले मीठो कुरा अझ मीठो बनाउँछ",
     image: story23Image,
+    images: [story23Image, story23Image2],
     summary: "Ping the panda discovers that waiting kindly is part of the recipe for joy.",
     summaryNepali: "पिङ पाण्डाले खुसीको परिकारमा नम्र प्रतीक्षा पनि सामेल हुन्छ भन्ने बुझ्छ।",
     content: `Ping the panda mixed honey, flour, and laughter. The bamboo kitchen smelled like hugs. But when the cookies went into the oven, Ping pressed his nose to the glass.
@@ -1190,7 +1220,9 @@ Grandma Bao smiled. "Good cookies need time, and so do good hearts. Let's share 
 
 They told tales of rivers and rain, of lost umbrellas and found friends. When the bell finally chimed, the cookies tasted of cinnamon and patience.
 
-Ping saved one for a friend who hadn't arrived yet—because patience is also keeping a place at the table.`,
+Ping saved one for a friend who hadn't arrived yet—because patience is also keeping a place at the table.
+
+On the windowsill, a last tray cooled as twilight turned the kitchen lavender. Ping wrote a tiny note: "For you, whenever you get here." He learned that kindness can be baked into tomorrow.`,
     contentNepali: `पिङ पाण्डाले मह, पिठो र हाँसो मिसायो। बाँसको भान्साघर आलिङ्गनजस्तै सुगन्धित भयो। तर कुकी ओभनमा गएपछि, पिङले आफ्नो नाक काँचमा टाँस्यो।
 
 "भयो? अब? अब?" ऊ हरेक मिनेट सोध्थ्यो।
@@ -1199,7 +1231,9 @@ Ping saved one for a friend who hadn't arrived yet—because patience is also ke
 
 उनीहरूले नदी र वर्षा, हराएका छाता र भेटिएका साथीहरूको कथा सुनाए। अन्ततः घण्टी बज्दा, कुकीहरू दालचिनी र धैर्यको स्वादले भरिएका थिए।
 
-पिङले एक वटा अझ नआएका साथीका लागि राख्यो—किनकि धैर्य भनेको मेजमा एक ठाउँ सुरक्षित राख्नु पनि हो।`
+पिङले एक वटा अझ नआएका साथीका लागि राख्यो—किनकि धैर्य भनेको मेजमा एक ठाउँ सुरक्षित राख्नु पनि हो।
+
+झ्यालको चौतारीमा, साँझ परेपछि अन्तिम ट्रे चिसिँदै गयो। पिङले सानो नोट लेख्यो: "तिमीका लागि, जब तिमी आउछौ।" उसले सिक्यो—दयालु प्रतीक्षा भोलिमा पनि पाक्न सक्छ।`
   },
   {
     id: 24,
@@ -1208,6 +1242,7 @@ Ping saved one for a friend who hadn't arrived yet—because patience is also ke
     moral: "Calm hearts find the current",
     moralNepali: "शान्त मुटुले सहि बहाव भेट्छ",
     image: story24Image,
+    images: [story24Image, story24Image2],
     summary: "Kiki the koala learns to breathe, float, and trust the gentle flow.",
     summaryNepali: "किकी कोआलाले सास फेर्न, तैरन र नम्र बहावमा भरोसा गर्न सिक्छिन्।",
     content: `When worries buzzed like angry bees, Kiki folded a paper boat and set it on the starlit pond. "I don't know the way," she sighed.
@@ -1216,14 +1251,22 @@ The boat drifted past reeds and sleepy frogs. "In… out," Kiki breathed with th
 
 A breeze nudged, a firefly guided, and the night hummed soft. Kiki realized she didn't have to push the water—she only had to float with kindness.
 
-By morning, her boat kissed the shore beside her favorite gum tree. "I found my way by finding my breath," she laughed, lighter than dew.`,
+By morning, her boat kissed the shore beside her favorite gum tree. "I found my way by finding my breath," she laughed, lighter than dew.
+
+That day, Kiki taught her breath to friends. They folded boats of hopes, and the pond became a classroom of stars and patience.
+
+Sometimes the wind was stubborn; sometimes the ripples argued—but calm always knew the current home.`,
     contentNepali: `जब चिन्ताहरू रिसाएका मौरीजस्तै गुन्गुनाए, किकीले कागजी डुंगा बनाएर तारा झुल्किएका पोखरीमा राखिन्। "म बाटो जानदिनँ," उसले सास फेर्दै भनिन्।
 
 डुंगा नरमकन बग्यो—खरानी, सुस्त ढ्याङ्ग्राहरू नजिकै। "भित्र… बाहिर," किकीले छालसँगै सास चलाइन।
 
 हावाले टेर्स्यायो, झिंग्राले बाटो देखायो, रातले नम्र गीत गाइरह्यो। किकीले बुझिन्—पानीलाई धकेल्न पर्दैन, दयाका साथ बग्न मात्र हो।
 
-बिहान, डुंगाले उनको मनपर्ने गम रुखको किनार चुम्यो। "मैले आफ्नो सास भेटेर आफ्नो बाटो भेटेँ," उनी हाँसिन्, शिशिरभन्दा हलुका।`
+बिहान, डुंगाले उनको मनपर्ने गम रुखको किनार चुम्यो। "मैले आफ्नो सास भेटेर आफ्नो बाटो भेटेँ," उनी हाँसिन्, शिशिरभन्दा हलुका।
+
+त्यो दिन, किकीले आफ्ना साथीहरूलाई सास सिकाइन्। उनीहरूले आशाहरूका डुंगा बनाए, र पोखरी तारा र धैर्यको कक्षा बन्यो।
+
+कहिलेकाहीँ हावा जिद्दी हुन्थ्यो; कहिलेकाहीँ छालहरू झगड्थे—तर शान्तिले सधैं घरतिरको बहाव चिन्थ्यो।`
   },
   {
     id: 25,
@@ -1260,6 +1303,7 @@ Tiko smiled. "We all are—when we share the crown."`,
     moral: "Listening turns many voices into one chorus",
     moralNepali: "सुन्न सक्दा धेरै आवाज एकै गीत बन्छ",
     image: story26Image,
+    images: [story26Image, story26Image2],
     summary: "Wumi the whale learns that leading means listening first.",
     summaryNepali: "वुमी ह्वेलले नेतृत्व गर्नु भनेको पहिले सुन्नु हो भनेर सिक्छिन्।",
     content: `Deep under coral castles, Wumi the whale hummed a lonely tune. The fish argued—too fast, too slow, too loud.
@@ -1268,14 +1312,18 @@ Wumi closed her eyes and listened to each small voice: the shy seahorse, the bol
 
 Soon the ocean gathered into one long, kind chord. The currents swayed. Even the grumpy eel smiled.
 
-Wumi learned that a song becomes a home when every voice fits inside.`,
+Wumi learned that a song becomes a home when every voice fits inside.
+
+After that day, the reef held evening concerts. Each tide brought a new solo, and Wumi kept time with her tail, the ocean breathing with her.`,
     contentNepali: `प्रवाला दरबारमुनि, वुमी ह्वेलले एक्लो धुन गुनगुनाइन्। माछाहरूको झगडा—धेरै छिटो, धेरै बिस्तारै, धेरै ठूलो।
 
 वुमीले आँखा बन्द गरिन् र हरेक सानो आवाज सुन्न थालिन्: लजालु समुन्द्री घोडा, साहसी क्लाउनफिस, निन्द्रा लागिरहेको केकडा। उनले तिनीहरूको स्वर न्यानो समुद्री हिउँजस्तै नम्रताका साथ फर्काइन्।
 
 छिट्टै समुद्र एक लामो, दयालु स्वरमा मिल्यो। बहावहरू हल्लिए। रिसाहा विद्युतीय मुरेल पनि मुस्कुरायो।
 
-वुमीले सिकिन्—हरेक आवाज सामेल हुँदा मात्र गीत घर बन्छ।`
+वुमीले सिकिन्—हरेक आवाज सामेल हुँदा मात्र गीत घर बन्छ।
+
+त्यस पछि, रीफमा साँझ कन्सर्ट हुन थाल्यो। हरेक ज्वार भाटाले नयाँ एकल ल्यायो, र वुमीले आफ्नो पुच्छरले ताल राखिन्—समुद्रले उनको साससँगै सास फेर्‍यो।`
   },
   {
     id: 27,
@@ -1352,6 +1400,7 @@ Lumi learned that small does not mean less. Small can mean near—near enough to
     moral: "Practice turns sparks into gentle light",
     moralNepali: "अभ्यासले चिस्कालाई नम्र उज्यालोमा बदल्छ",
     image: story30Image,
+    images: [story30Image, story30Image2],
     summary: "Dori the dragon learns to breathe feelings into harmless colors.",
     summaryNepali: "डोरी ड्रागनले भावनालाई निर्दोष रङमा सासजस्तै निकाल्न सिक्छिन्।",
     content: `Dori hatched with hiccup-flames—pop! fizz!—that singed her nest. "I'm too much," she sniffled.
@@ -1360,13 +1409,17 @@ Grand Elder Ember taught her a counting breath. "In four, hold four, out four—
 
 Soon her sparks became rainbow puffs that painted the cave in gentle light. The village gathered at dusk to watch colors bloom from Dori's careful breath.
 
-She learned that feelings aren't fires to fear—they're colors to learn.`,
+She learned that feelings aren't fires to fear—they're colors to learn.
+
+On festival night, Dori breathed colors for others—calm blues for worries, bright yellows for courage. The cave glowed like a sunrise that took its time.`,
     contentNepali: `डोरी सिँगानलाग्दो आगोजस्ता—पप! फिज्ज!—फ्लेमसँग जन्मिइन् जसले उनको गुँड पोल्यो। "म धेरै हुँ," उनले सुँक्कसुँक्काईन्।
 
 ज्येष्ठ एम्बरले गन्ती सास सिकाए। "चार भित्र, चार रोकेर, चार बाहिर—हिउँजस्तै कोमल।"
 
 छिट्टै उनका चिस्काहरू रङीन फुई बने जसले गुफालाई नम्र उज्यालोले रंगायो। साँझ गाउँका सबैजना आउँथे डोरीको होशियारी सासबाट फुल्ने रङ हेर्न।
 
-उनले सिकिन्—भावनाहरू डराउने आगो होइनन्—सिक्ने रङ हुन्।`
+उसले सिकिन्—भावनाहरू डराउने आगो होइनन्—सिक्ने रङ हुन्।
+
+उत्सवको रात, डोरीले अरूका लागि रङ सास फालिन्—चिन्ताका लागि निलो शान्ति, साहसका लागि चम्किलो पहेंलो। गुफा बिस्तारै आउने सूर्योदयजस्तै चम्कियो।`
   }
 ];
