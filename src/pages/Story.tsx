@@ -30,10 +30,25 @@ export default function Story() {
   const prevStory = stories.find((s) => s.id === storyId - 1);
   const nextStory = stories.find((s) => s.id === storyId + 1);
 
+  const englishIntros = ["Once,", "Once upon a time,", "Long ago,", "Many years ago,"];
+  const nepaliIntros = ["एकपटक,", "एउटा समयको कुरा हो,", "धेरै पहिले,", "धेरै वर्ष पहिले,"];
+
+  const ensureIntro = (text: string, nepali: boolean) => {
+    const intros = nepali ? nepaliIntros : englishIntros;
+    const trimmed = text.trim();
+    const lower = trimmed.toLowerCase();
+    const hasIntro = intros.some((p) => lower.startsWith(p.toLowerCase()));
+    if (hasIntro) return text;
+    const idx = (storyId - 1) % intros.length;
+    return `${intros[idx]} ${text}`;
+  };
+
   const getStoryText = () => {
     const title = isNepali ? story.titleNepali : story.title;
     const moral = isNepali ? story.moralNepali : story.moral;
-    const content = (isNepali ? story.contentNepali : story.content).split("\n\n").join(" ");
+    const contentRaw = isNepali ? story.contentNepali : story.content;
+    const contentWithIntro = ensureIntro(contentRaw, isNepali);
+    const content = contentWithIntro.split("\n\n").join(" ");
     return `${title}. ${moral}. ${content}`;
   };
 
@@ -87,6 +102,8 @@ export default function Story() {
       startSpeaking();
     }
   }, [isNepali]);
+
+  const contentWithIntro = ensureIntro(isNepali ? story.contentNepali : story.content, isNepali);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-story-secondary/20">
@@ -180,7 +197,7 @@ export default function Story() {
 
             {/* Story Text */}
             <div className="prose prose-lg max-w-none">
-              {(isNepali ? story.contentNepali : story.content).split('\n\n').map((paragraph, index) => (
+              {contentWithIntro.split('\n\n').map((paragraph, index) => (
                 <p key={index} className="text-foreground leading-relaxed mb-6 text-lg">
                   {paragraph}
                 </p>
